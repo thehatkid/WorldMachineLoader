@@ -51,7 +51,7 @@ namespace WorldMachineLoader
             //Harmony.DEBUG = true;
             Harmony harmony = new Harmony("io.github.thehatkid.oswmeloader");
 
-            harmony.PatchAll(gameAssembly);
+            harmony.PatchAll();
 
             // Invoke OneShotMG entrypoint to run the game
             MethodBase gameEntrypoint = gameAssembly.ManifestModule.ResolveMethod(gameAssembly.EntryPoint.MetadataToken);
