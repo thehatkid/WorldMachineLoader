@@ -1,0 +1,11 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AssemblySearchPaths>$(AssemblySearchPaths);{GAC}</AssemblySearchPaths>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <Import Project="FindOSWME.targets" />
+  <Target Name="CheckOSWMEInstallPath" AfterTargets="BeforeBuild">
+    <Error Condition="!Exists('$(GamePath)')" Text="Failed to find the game install path." />
+  </Target>
+</Project>

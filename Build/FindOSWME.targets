@@ -1,0 +1,24 @@
+<!--
+
+This MSBuild file detects OneShot: World Machine Edition Steam
+game install path and sets the 'GamePath' property.
+
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Choose>
+    <When Condition="$(OS) == 'Windows_NT'">
+      <PropertyGroup>
+        <!-- Search in Registry -->
+        <GamePath Condition="!Exists('$(GamePath)')">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 2915460', 'InstallLocation', null, RegistryView.Registry64, RegistryView.Registry32))</GamePath>
+
+        <!-- Derive from Steam Library path -->
+        <_SteamLibraryPath>$([MSBuild]::GetRegistryValueFromView('HKEY_CURRENT_USER\SOFTWARE\Valve\Steam', 'SteamPath', null, RegistryView.Registry32))</_SteamLibraryPath>
+        <GamePath Condition="!Exists('$(GamePath)') AND '$(_SteamLibraryPath)' != ''">$(_SteamLibraryPath)\steamapps\common\OneShot World Machine Edition</GamePath>
+
+        <!-- Direct Steam Library paths -->
+        <GamePath Condition="!Exists('$(GamePath)')">C:\Program Files\Steam\steamapps\common\OneShot World Machine Edition</GamePath>
+        <GamePath Condition="!Exists('$(GamePath)')">C:\Program Files (x86)\Steam\steamapps\common\OneShot World Machine Edition</GamePath>
+      </PropertyGroup>
+    </When>
+  </Choose>
+</Project>
