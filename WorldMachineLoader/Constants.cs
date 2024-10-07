@@ -3,6 +3,7 @@ using System.Reflection;
 
 namespace WorldMachineLoader
 {
+    /// <summary>Contains constants for defining game details such as game path and assembly name.</summary>
     internal static class Constants
     {
         /// <summary>The path to the game folder.</summary>
