@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading;
 using System.Reflection;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -138,10 +137,7 @@ namespace WorldMachineLoader
             // Invoke OneShotMG entry point to run the game
             Console.WriteLine("Starting OneShotMG...");
             MethodBase gameEntrypoint = gameAssembly.ManifestModule.ResolveMethod(gameAssembly.EntryPoint.MetadataToken);
-            new Thread(() =>
-            {
-                gameEntrypoint.Invoke(null, null);
-            }).Start();
+            gameEntrypoint.Invoke(null, null);
         }
     }
 }
