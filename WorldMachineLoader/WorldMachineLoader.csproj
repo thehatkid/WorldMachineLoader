@@ -30,14 +30,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
-    <Compile Include="Patches.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="ModLoader.cs" />
+    <Compile Include="Modding\Mod.cs" />
+    <Compile Include="Modding\ModMetadata.cs" />
+    <Compile Include="Patches\Patches.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony" HintPath="..\Build\0Harmony.dll" Private="True" />
     <Reference Include="MonoGame.Framework" HintPath="$(GamePath)\MonoGame.Framework.dll" Private="False" />
+    <Reference Include="Newtonsoft.Json" HintPath="$(GamePath)\Newtonsoft.Json.dll" Private="False" />
     <Reference Include="OneShotMG" HintPath="$(GamePath)\OneShotMG.exe" Private="False" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

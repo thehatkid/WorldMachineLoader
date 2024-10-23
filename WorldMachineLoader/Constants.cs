@@ -11,5 +11,8 @@ namespace WorldMachineLoader
 
         /// <summary>The game's assembly name.</summary>
         internal static string GameAssemblyName { get; } = "OneShotMG";
+
+        /// <summary>The path to the all mods folder.</summary>
+        public static string ModsPath { get; } = Path.Combine(GamePath, "mods");
     }
 }
